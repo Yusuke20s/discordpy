@@ -80,7 +80,7 @@ async def on_message(message):
             embed2.add_field(name="もっと頑張ろう！", value="1/91125 を目指して頑張ろう！")
             await message.channel.send(embed=embed)
             await message.channel.send(embed=embed2)
-        #なにか*3
+        #なにか*2
         elif sa == sb or sb == sc or sc == sa:
             embed.add_field(name="惜しい！頑張って！", value=slot)
             await message.channel.send(embed=embed)
