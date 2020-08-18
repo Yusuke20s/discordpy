@@ -16,6 +16,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     
+    if message.author.bot:
+        return
+
     #Discordアカウント作成日(世界標準時)
     if message.content == "いつ":
         day = message.author.created_at.strftime("%Y/%m/%d")
