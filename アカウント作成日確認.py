@@ -2,16 +2,14 @@ import discord
 from datetime import datetime
 
 #token.txtファイルからTOKENの読み込み
-f = open("token.txt")
-TOKEN = f.read()
-f.close()
+with open("token.txt") as f:
+	TOKEN = f.open()
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print("logged in")
-    print("")
+    print("logged in\n")
 
 @client.event
 async def on_message(message):
