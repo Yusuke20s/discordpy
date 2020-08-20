@@ -3,7 +3,7 @@ import random
 
 #token.txtファイルからTOKENの読み込み
 with open("token.txt") as f:
-	TOKEN = f.read()
+    TOKEN = f.read()
 
 client = discord.Client()
 
