@@ -3,7 +3,7 @@ from datetime import datetime
 
 #token.txtファイルからTOKENの読み込み
 with open("token.txt") as f:
-	TOKEN = f.open()
+	TOKEN = f.read()
 
 client = discord.Client()
 
