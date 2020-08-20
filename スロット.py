@@ -2,16 +2,14 @@ import discord
 import random
 
 #token.txtファイルからTOKENの読み込み
-f = open("token.txt")
-TOKEN = f.read()
-f.close()
+with open("token.txt") as f:
+    TOKEN = f.read()
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print("logged in")
-    print("")
+    print("logged in\n")
 
 
 @client.event
@@ -47,8 +45,7 @@ async def on_message(message):
             embed2.add_field(name="すごすぎます！", value="あなたは神です！")
             await message.channel.send(embed=embed)
             await message.channel.send(embed=embed2)
-            await message.channel.send(f"@everyone {str(message.author.name)}が7を3つ揃えました！")
-            await message.channel.send("これが出る確率は 1/91125 です！")
+            await message.channel.send(f"@everyone {str(message.author.name)}が7を3つ揃えました！\nこれが出る確率は 1/91125 です！")
         #肉*3
         elif "meat_on_bone" in sa and "meat_on_bone" in sb and "meat_on_bone" in sc:
             embed.add_field(name="おめでとう！", value=slot)
@@ -57,8 +54,7 @@ async def on_message(message):
             embed2.add_field(name="もっと頑張ろう！", value="1/91125 を目指して頑張ろう！")
             await message.channel.send(embed=embed)
             await message.channel.send(embed=embed2)
-            await message.channel.send(f"@everyone {str(message.author.name)}が肉を3つ揃えました！")
-            await message.channel.send("これが出る確率は 64/91125 です！")
+            await message.channel.send(f"@everyone {str(message.author.name)}が肉を3つ揃えました！\nこれが出る確率は 64/91125 です！")
         #中指*3
         elif "middle_finger" in sa and "middle_finger" in sb and "middle_finger" in sc:
             embed.add_field(name="ドンマイ！", value=slot)
