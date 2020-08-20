@@ -1,16 +1,14 @@
 import discord
 
 #token.txtファイルからTOKENの読み込み
-f = open("token.txt")
-TOKEN = f.read()
-f.close()
+with open("token.txt") as f:
+    TOKEN = f.read()
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print("logged in")
-    print("")
+    print("logged in\n")
 
 #ローマ字平仮名変換(これですべてではない)
 #重ね文字
@@ -103,7 +101,7 @@ async def on_message(message):
         await message.delete()
 
         if not "0" in hiragana_list:
-                return
+            return
         new_content = content
         new_content_author = author
             
