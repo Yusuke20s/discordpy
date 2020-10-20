@@ -31,7 +31,7 @@ async def on_message(message):
 
         def checkj(reaction, user):
             emoji = str(reaction.emoji)
-            if not user.name == message.author.name:
+            if not user == message.author:
                 pass
             else:
                 return emoji == "✊" or emoji == "✌️" or emoji == "✋"
