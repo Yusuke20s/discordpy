@@ -1,7 +1,7 @@
 import discord
 import random
 
-#token.txtファイルからTOKENの読み込み
+# token.txtファイルからTOKENの読み込み
 with open("token.txt") as f:
     TOKEN = f.read()
 
@@ -30,4 +30,5 @@ async def on_message(message):
         embed.add_field(name="[一言アドバイス]", value=random.choice(("一生懸命頑張ると吉", "無理をしない程度に頑張ると吉", "早く寝ると吉", "一日楽しむと吉", "趣味に没頭すると吉")), inline=False)
         await message.channel.send(embed=embed)
 
-client.run(TOKEN)
+if __name__ == "__main__":
+    client.run(TOKEN)

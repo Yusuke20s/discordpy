@@ -1,18 +1,15 @@
 import discord
 import random
 
-#token.txtファイルからTOKENの読み込み
-f = open("token.txt")
-TOKEN = f.read()
-f.close()
+# token.txtファイルからTOKENの読み込み
+with open("token.txt") as f:
+	TOKEN = f.open()
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print("logged in")
-    print("")
-
+    print("logged in\n")
 
 @client.event
 async def on_message(message):
@@ -29,7 +26,7 @@ async def on_message(message):
         lst = "私の勝ち！"
 
         def jankencheck(m):
-            return (m.author == message.author) and (m.content in ['グー', 'チョキ', 'パー'])
+            return (m.author == message.author) and (m.content in ["グー", "チョキ", "パー"])
 
         reply = await client.wait_for("message", check=jankencheck)
         if reply.content == jkbot:
@@ -47,12 +44,15 @@ async def on_message(message):
                 else:
                     judge = lst
 
-            else:
+            elif reply.content == "パー":
                 if jkbot == "グー":
                     judge = wn
                 else:
                     judge = lst
+            else:
+                judge = "Error"
 
         await message.channel.send(judge)
 
-client.run(TOKEN)
+if __name__ == "__main__":
+    client.run(TOKEN)

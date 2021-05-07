@@ -1,7 +1,7 @@
 import discord
 import random
 
-#token.txtファイルからTOKENの読み込み
+# token.txtファイルからTOKENの読み込み
 with open("token.txt") as f:
     TOKEN = f.read()
 
@@ -10,7 +10,6 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print("logged in\n")
-
 
 @client.event
 async def on_message(message):
@@ -36,7 +35,7 @@ async def on_message(message):
             else:
                 return emoji == "✊" or emoji == "✌️" or emoji == "✋"
 
-        reaction, user= await client.wait_for('reaction_add', check=checkj)
+        reaction, user= await client.wait_for("reaction_add", check=checkj)
         if str(reaction.emoji) == jkbot:
             judge = draw
         else:
@@ -52,20 +51,20 @@ async def on_message(message):
                 else:
                     judge = lst
 
-            else:
+            elif str(reaction.emoji) == "✋":
                 if jkbot == "✊":
                     judge = wn
                 else:
                     judge = lst
+            else:
+                judge = "Error"
 
         embed = discord.Embed(title="じゃんけん", description=f"{message.author.mention}さんとの結果",color=0x93b881)
         embed.add_field(name="結果" ,value=f"あなた {str(reaction.emoji)} × {jkbot} BOT", inline=False)
         embed.add_field(name="一言" ,value=judge, inline=False)
 
-        await j.remove_reaction("✊", client.user)
-        await j.remove_reaction("✌️", client.user)
-        await j.remove_reaction("✋", client.user)
-        await j.remove_reaction(str(reaction.emoji), user)
+        await j.clear_reactions()
         await j.edit(embed=embed, content=None)
 
-client.run(TOKEN)
+if __name__ == "__main__":
+    client.run(TOKEN)
