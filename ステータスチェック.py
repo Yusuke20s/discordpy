@@ -21,7 +21,7 @@ async def on_ready():
 GUILD_ID = 000000000000000000
 CHANNEL_ID = 000000000000000000
 
-bot_id = [000000000000000000]
+bots_id_list = [000000000000000000]
 
 @tasks.loop(seconds=60)
 async def loop():
@@ -31,7 +31,7 @@ async def loop():
         if "online" in member.status:
             pass
         else:
-            if member.id in bot_id:
+            if member.id in bots_id_list:
                 await channel.send(f"{member.display_name}がオフラインです")
 
 @client.event
