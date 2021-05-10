@@ -1,6 +1,4 @@
 import discord
-import os
-import server
 from discord.ext import tasks
 
 intents = discord.Intents.default()
