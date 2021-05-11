@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 import discord
-import os
 
 from datetime import datetime, timedelta, timezone
 
