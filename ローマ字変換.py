@@ -24,9 +24,10 @@ h1d7={"wwa":"っわ","wwi":"っうぃ","wwu":"っう","wwe":"っうぇ","wwo":"�
 h1d8={"xtu":"っ","xya":"ゃ","xyu":"ゅ","xyo":"ょ"}
 h1d9={"ltu":"っ","lya":"ゃ","lyu":"ゅ","lyo":"ょ"}
 h1d10={"xa":"ぁ","xi":"ぃ","xu":"ぅ","xe":"ぇ","xo":"ぉ"}
-h1d11={"shi":"し","chi":"ち","tsu":"つ"}
+h1d11={"la":"ぁ","li":"ぃ","lu":"ぅ","le":"ぇ","lo":"ぉ"}
+h1d12={"shi":"し","chi":"ち","tsu":"つ"}
 
-hiragana_dict1.update(**h1d2, **h1d3, **h1d4, **h1d5, **h1d6, **h1d7, **h1d8, **h1d9, **h1d10, **h1d11)
+hiragana_dict1.update(**h1d2, **h1d3, **h1d4, **h1d5, **h1d6, **h1d7, **h1d8, **h1d9, **h1d10, **h1d11, **h1d12)
 
 # 基本変換
 hiragana_dict2={"ka":"か","ki":"き","ku":"く","ke":"け","ko":"こ"}
@@ -74,38 +75,48 @@ hiragana_dict3.update(**h3d2)
 # 母音字等
 hiragana_dict4={"a":"あ","i":"い","u":"う","e":"え","o":"お","n":"ん"}
 
-hiragana_list = []
+data = {}
 
-# メッセージを受けた時の動作
+@client.event
+async def on_ready():
+	print("logged in\n")
+	await client.change_presence(activity=discord.Game(name='"--" or mention', type=1))
+
 @client.event
 async def on_message(message):
 
     if message.author.bot:
         return
 
-    # 英数字のみ(一部記号ok)かの判定
-    if message.content.replace(",", "").replace(".", "").replace("'", "").replace("?", "").replace("!", "").replace("\n", "").replace(" ", "").encode("utf-8").isalnum():
-        # 数字のみかの判定
+    if message.content.replace(",", "").replace(".", "").replace("'", "").replace("?", "").replace("!", "").replace("\n", "").replace("-", "").replace(" ", "").encode("utf-8").isalnum():
+		
+        # 数字のみか判定
         if message.content.isnumeric():
             return
+            
+        channel_id = message.channel.id
+        author_name = f"{message.channel.id}_name"
 
-        global content
-        global author
-        content = message.content
-        author = str(message.author.display_name)
-        if not "0" in hiragana_list:
-            hiragana_list.append("0")
+        data[channel_id] = message.content
+        data[author_name] = message.author.display_name
 
-    if message.content == "--":
+    if message.content == "--" or client.user in message.mentions:
 
+        id = message.channel.id
+        name_id = f"{message.channel.id}_name"
+        
+        try:
+            content = data[id]
+            author = data[name_id]
+        except:
+            data[id] = ""
+            data[name_id] = "Unknown"
+            content = data[id]
+            author = data[name_id]
+		
         await message.delete()
 
-        if not "0" in hiragana_list:
-            return
-        new_content = content
-        new_content_author = author
-            
-        new_content = new_content.lstrip()
+        new_content = content.lstrip()
 
         for k1 in hiragana_dict1:
             if k1 in new_content:
@@ -129,7 +140,7 @@ async def on_message(message):
 
         new_content = new_content.replace("'", "")
 
-        await message.channel.send(f"```py\n@{new_content_author} さんのメッセージ\n'{new_content}'\n```")
+        await message.channel.send(f"```py\n@{author} さんのメッセージ\n'{new_content}'\n```")
 
 if __name__ == "__main__":
     client.run(TOKEN)
