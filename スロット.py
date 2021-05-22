@@ -19,12 +19,10 @@ async def on_message(message):
         return
     
     if message.content == "slot":
-        la = [":poop:", ":imp:", ":middle_finger:", ":meat_on_bone:", ":seven:", ":yum:"]
-        lb = [":poop:", ":imp:", ":middle_finger:", ":meat_on_bone:", ":seven:", ":yum:"]
-        lc = [":poop:", ":imp:", ":middle_finger:", ":meat_on_bone:", ":seven:", ":yum:"]
-        sa = str(random.choices(la))
-        sb = str(random.choices(lb))
-        sc = str(random.choices(lc))
+        l = [":poop:", ":imp:", ":middle_finger:", ":meat_on_bone:", ":seven:", ":yum:"]
+        sa = str(random.choices(l))
+        sb = str(random.choices(l))
+        sc = str(random.choices(l))
 
         sa = sa.lstrip("['")
         sa = sa.rstrip("']")
