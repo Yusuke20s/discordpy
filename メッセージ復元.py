@@ -47,14 +47,5 @@ async def on_message_edit(before, after):
 
 	await before.channel.send(f"```diff\n{str(before.author.display_name)} さんのメッセージ\n- {b}\n+ {a}\n```")
 
-@client.event
-async def on_message(message):
-
-    if message.author.bot:
-        return
-    
-    if message.content == "!ping":
-        await message.channel.send("pong!")
-
 if __name__ == "__main__":
     client.run(TOKEN)
