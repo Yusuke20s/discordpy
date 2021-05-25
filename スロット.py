@@ -5,7 +5,8 @@ import random
 with open("token.txt") as f:
     TOKEN = f.read()
 
-client = discord.Client()
+intents = discord.Intents.default()
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
