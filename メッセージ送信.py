@@ -14,9 +14,8 @@ async def on_ready():
 
 async def greeting_gm():
     while True:
-        content = input("送信メッセージを入力:")
-        
-        CHANNEL_ID = input("送信チャンネルIDを入力:")
+        content = input("送信メッセージを入力: ")
+        CHANNEL_ID = input("送信チャンネルIDを入力: ")
 
         try:
             channel = client.get_channel(int(CHANNEL_ID))
@@ -26,4 +25,5 @@ async def greeting_gm():
 
         await asyncio.sleep(1)
 
-client.run(TOKEN)
+if __name__ == "__main__":
+    client.run(TOKEN)
