@@ -25,14 +25,9 @@ async def on_message(message):
         sb = str(random.choices(l))
         sc = str(random.choices(l))
 
-        sa = sa.lstrip("['")
-        sa = sa.rstrip("']")
-
-        sb = sb.lstrip("['")
-        sb = sb.rstrip("']")
-
-        sc = sc.lstrip("['")
-        sc = sc.rstrip("']")
+        sa = sa.lstrip("['").rstrip("']")
+        sb = sb.lstrip("['").rstrip("']")
+        sc = sc.lstrip("['").rstrip("']")
 
         slot = sa + sb + sc
         embed = discord.Embed(title="スロット", description=f"{message.author.mention}さん 揃うかな？",color=0xffd700)
