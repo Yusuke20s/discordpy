@@ -39,13 +39,13 @@ async def on_message(message):
         number = "".join(number_list2)
 
         if 1 == int(number):
-            embed = discord.Embed(title=f"{number}までの素数", description=" ", color=0xf54242)
+            embed = discord.Embed(title=f"{number}までの素数", description="", color=0xf54242)
             embed.add_field(name="なし", value="1は素数ではありません")
             await message.channel.send(embed=embed)
             return
 
         if 2400 < int(number):
-            embed = discord.Embed(title=f"{number}までの素数", description=" ", color=0xdb0909)
+            embed = discord.Embed(title=f"{number}までの素数", description="", color=0xdb0909)
             embed.add_field(name="エラー", value="送信量の上限を越えてしまうため送信できません.")
             await message.channel.send(embed=embed)
             return
@@ -72,9 +72,8 @@ async def on_message(message):
                 i = i + 1
         
             sosu1 = str(sosu_list1)
-            sosu1 = sosu1.lstrip("[")
-            sosu1 = sosu1.rstrip("]")
-            embed1 = discord.Embed(title=f"{number}までの素数", description=" ", color=0xf58742)
+            sosu1 = sosu1.lstrip("[").rstrip("]")
+            embed1 = discord.Embed(title=f"{number}までの素数", description="", color=0xf58742)
             embed1.add_field(name=str(len(sosu_list)) + "個の素数があります", value=sosu1)
             await message.channel.send(embed=embed1)
 
@@ -90,9 +89,8 @@ async def on_message(message):
                     i = i + 1
 
                 sosu2 = str(sosu_list2)
-                sosu2 = sosu2.lstrip("[")
-                sosu2 = sosu2.rstrip("]")
-                embed2 = discord.Embed(title=f"{number}までの素数(2)", description=" ", color=0xf58742)
+                sosu2 = sosu2.lstrip("[").rstrip("]")
+                embed2 = discord.Embed(title=f"{number}までの素数(2)", description="", color=0xf58742)
                 embed2.add_field(name="2ページ目", value=sosu2)
                 await message.channel.send(embed=embed2)
 
