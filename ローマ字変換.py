@@ -124,26 +124,26 @@ async def on_message(message):
 		
         await message.delete()
 
-        new_content = content.lstrip()
+        new_content = content.lstrip().lower()
 
         for k1 in hiragana_dict1:
             if k1 in new_content:
-                v1 = hiragana_dict1[k1.lower()]
+                v1 = hiragana_dict1[k1]
                 new_content = new_content.replace(k1, v1)
 
         for k2 in hiragana_dict2:
             if k2 in new_content:
-                v2 = hiragana_dict2[k2.lower()]
+                v2 = hiragana_dict2[k2]
                 new_content = new_content.replace(k2, v2)
 
         for k3 in hiragana_dict3:
             if k3 in new_content:
-                v3 = hiragana_dict3[k3.lower()]
+                v3 = hiragana_dict3[k3]
                 new_content = new_content.replace(k3, v3)
 
         for k4 in hiragana_dict4:
             if k4 in new_content:
-                v4 = hiragana_dict4[k4.lower()]
+                v4 = hiragana_dict4[k4]
                 new_content = new_content.replace(k4, v4)
 
         new_content = new_content.replace("'", "")
