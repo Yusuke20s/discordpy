@@ -131,7 +131,7 @@ async def on_message(message):
             content = data[id]
             author = data[name_id]
 		
-        #await message.delete()
+        await message.delete()
 
         new_content = content.lstrip().lower()
 
