@@ -1,4 +1,5 @@
 import discord
+import string
 
 # token.txtファイルからTOKENの読み込み
 with open("token.txt") as f:
@@ -96,12 +97,20 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    if message.content.replace(",", "").replace(".", "").replace("'", "").replace("?", "").replace("!", "").replace("\n", "").replace("-", "").replace(" ", "").encode("utf-8").isalnum():
-		
+    content = message.content
+
+    for str in string.punctuation:
+        content = content.replace(str, "")
+
+    if content.encode("utf-8").isalnum():
+
         # 数字のみか判定
         if message.content.isnumeric():
             return
-            
+
+        if message.content == "--":
+            return
+
         channel_id = message.channel.id
         author_name = f"{message.channel.id}_name"
 
@@ -122,7 +131,7 @@ async def on_message(message):
             content = data[id]
             author = data[name_id]
 		
-        await message.delete()
+        #await message.delete()
 
         new_content = content.lstrip().lower()
 
