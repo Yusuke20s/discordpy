@@ -21,7 +21,7 @@ async def greeting_gm():
             channel = client.get_channel(int(CHANNEL_ID))
             await channel.send(content)
         except:
-            pass
+            print("送信失敗\n")
 
         await asyncio.sleep(1)
 
