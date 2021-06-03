@@ -33,7 +33,6 @@ async def on_message(message):
         number_list2 = []
 
         for val in number_list:
-            #print(number_dict[val], end="")
             number_list2.append(number_dict[val])
 
         number = "".join(number_list2)
