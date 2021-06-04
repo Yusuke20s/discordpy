@@ -27,7 +27,6 @@ async def on_voice_state_update(member, before, after):
 			try:
 				guild_list = data[guild_id]
 				channel_id = guild_list[1]
-				#break
 			except:
 				pass
 
