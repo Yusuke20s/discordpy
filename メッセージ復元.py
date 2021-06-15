@@ -15,8 +15,7 @@ async def on_ready():
 # 削除メッセージ復元
 @client.event
 async def on_message_delete(message):
-    m = str(message.content)
-    m = m.replace("```", "")
+    m = str(message.content).replace("```", "")
 
     if message.author.bot:
         return
@@ -37,10 +36,8 @@ async def on_message_delete(message):
 # 編集メッセージ復元
 @client.event
 async def on_message_edit(before, after):
-	b = str(before.content)
-	b = b.replace("```", "")
-	a = str(after.content)
-	a = a.replace("```", "")
+	b = str(before.content).replace("```", "")
+	a = str(after.content).replace("```", "")
 
 	if before.author.bot:
 		return
