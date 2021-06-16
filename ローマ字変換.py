@@ -5,7 +5,10 @@ import string
 with open("token.txt") as f:
     TOKEN = f.read()
 
-client = discord.Client()
+intents = discord.Intents.default()
+intents.members = True
+
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
@@ -99,6 +102,7 @@ async def on_message(message):
 
     content = message.content
 
+    # 記号を置換
     for str in string.punctuation:
         content = content.replace(str, "")
 
@@ -121,7 +125,7 @@ async def on_message(message):
 
         id = message.channel.id
         name_id = f"{message.channel.id}_name"
-        
+
         try:
             content = data[id]
             author = data[name_id]
@@ -130,7 +134,7 @@ async def on_message(message):
             data[name_id] = "Unknown"
             content = data[id]
             author = data[name_id]
-		
+
         await message.delete()
 
         new_content = content.lstrip().lower()
