@@ -54,7 +54,7 @@ async def on_message(message):
             sosu_list = []
             while i <= int(number):
                 j = 2
-                while not ( i % j ==0):
+                while not ( i % j == 0):
                     j = j + 1
                 if i == j:
                     sosu_list.append(i)
@@ -64,7 +64,7 @@ async def on_message(message):
             sosu_list1 = []
             while i <= int(number) and i <= 1240:
                 j = 2
-                while not ( i % j ==0):
+                while not ( i % j == 0):
                     j = j + 1
                 if i == j:
                     sosu_list1.append(i)
@@ -81,7 +81,7 @@ async def on_message(message):
                 sosu_list2 = []
                 while i <= int(number):
                     j = 2
-                    while not ( i % j ==0):
+                    while not ( i % j == 0):
                         j = j + 1
                     if i == j:
                         sosu_list2.append(i)
